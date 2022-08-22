@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: rooms
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: 12345
+      MYSQL_ROOT_PASSWORD: root
+    working_dir: /app/Models/*
+    ports:
+      - 3306:3306
