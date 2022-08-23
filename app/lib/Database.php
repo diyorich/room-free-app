@@ -22,7 +22,7 @@ class Database
         $this->dbname = DB_NAME;
 
         try {
-            $this->connection = new \mysqli($this->host, $this->user, $this->pass, $this->dbname);
+            $this->connection = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
         } catch (\Exception $exception)
         {
             //TODO write occured exception into logger
@@ -31,6 +31,12 @@ class Database
 
     public function queryExecute(string $query)
     {
-        return $this->connection->query($query)->fetch_all();
+        $result = mysqli_query($this->connection, $query);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+    public function query(string $query)
+    {
+        $this->connection->query($query);
     }
 }
