@@ -3,6 +3,6 @@
 require_once '../vendor/autoload.php';
 require_once '../config/config.php';
 
-//Starting dialog in terminal
-$commandLine = new \App\cmd\CommandLineClass();
-$commandLine->startDialog();
+//Starting application in terminal
+$app = new \Views\FrontTerminalApplication();
+$app->start();

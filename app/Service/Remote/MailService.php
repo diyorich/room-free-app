@@ -4,12 +4,18 @@ namespace App\Service\Remote;
 
 class MailService
 {
+    const RAPID_KEY = RAPID_API_KEY;
+    const RAPID_HOST = RAPID_HOST;
+
     public function sendMail($mailAddress, $messageTitle, $messageBody)
     {
+        $rapidKey = self::RAPID_KEY;
+        $rapidHost = self::RAPID_HOST;
+
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send",
+            CURLOPT_URL => "https://{$rapidHost}/mail/send",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_ENCODING => "",
@@ -39,8 +45,8 @@ class MailService
         ]
             }",
             CURLOPT_HTTPHEADER => [
-                "X-RapidAPI-Host: rapidprod-sendgrid-v1.p.rapidapi.com",
-                "X-RapidAPI-Key: acf25cb88cmshe6aa40b94db6d56p1ac46fjsnb1587b115d73",
+                "X-RapidAPI-Host: {$rapidHost}",
+                "X-RapidAPI-Key: {$rapidKey}",
                 "content-type: application/json"
             ],
         ]);

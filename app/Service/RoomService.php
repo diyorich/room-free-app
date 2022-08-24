@@ -19,31 +19,23 @@ class RoomService
         return $this->room->getAllRooms();
     }
 
-    /**
-     * @param int $roomId meeting room id
-     * @param string $weekDay meeting day
-     * @param string $start meeting start
-     * @param int $duration meeting duration
-     * @return array
-     */
-    public function checkIfRoomScheduleIsFree(int $roomId, string $weekDay, string $start, int $duration): array
+    public function getRoomInfo(int $roomId): array
     {
-        return $this->room->getRoomSchedule($roomId, $weekDay, );
-    }
-
-    public function checkIfRoomExist(int $roomId): bool
-    {
-        return (bool) $this->room->getRoomById($roomId);
+        return $this->room->getRoomById($roomId);
     }
 
     public function checkIfRoomIsFreeForRequestedTime(array $reserveInfo): bool|array
     {
-        //TODO checking if room is busy for given time
+        //TODO checking if room is busy for given time logic must be implemented
         return true;
     }
 
-    public function reserverRoom(array $reserveInfo)
+    public function reserveRoom(array $reserveInfo)
     {
+        //Some kind of room free validation
+        $this->checkIfRoomIsFreeForRequestedTime($reserveInfo);
+
+
         //TODO add validation to max duration hours 10 hours
         //TODO validate date value
         $roomId = $reserveInfo['roomId'];
@@ -61,8 +53,7 @@ class RoomService
 
         $reserverMail = $reserveInfo['reserverMail'];
         $mailTitle = "Room #{$roomId} reserved";
-        $mailBody = "You received this mail because you received room #{$roomId} for date : {$reserveDate} ($reserveTime - $reservedFinishHours)";
-        var_dump($reserverMail);
+        $mailBody = "You received this mail because you reserved room #{$roomId} for date : {$reserveDate} ($reserveTime - $reservedFinishHours)";
         $mailService = new MailService();
         $mailService->sendMail($reserverMail, $mailTitle,$mailBody);
     }
