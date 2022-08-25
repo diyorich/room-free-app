@@ -39,4 +39,14 @@ class Database
     {
         $this->connection->query($query);
     }
+
+    public function startTransaction()
+    {
+        $this->connection->begin_transaction();
+    }
+
+    public function rollBackTransaction()
+    {
+        $this->connection->rollback();
+    }
 }
