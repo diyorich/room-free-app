@@ -31,9 +31,4 @@ class RoomsController
     {
         return $this->roomService->checkRoomIsFree($reserveInfo);
     }
-
-    public function sendNotification(string $token)
-    {
-        $this->notificationService->sendNotification($token);
-    }
 }

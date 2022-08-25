@@ -2,15 +2,19 @@
 
 namespace Views\Cmd;
 
+use App\Controller\NotificationController;
 use App\Controller\RoomsController;
 
 class RoomsShow extends BaseShow
 {
     protected $roomController;
+    protected $notificationController;
 
     public function __construct()
     {
         $this->roomController = new RoomsController();
+        $this->notificationController = new NotificationController();
+
     }
 
     public function showAllRooms($rooms)
@@ -140,7 +144,7 @@ class RoomsShow extends BaseShow
 
     public function sendNotification($token)
     {
-        $this->roomController->sendNotification($token);
+        $this->notificationController->sendNotification($token);
         $message = "Notification successfully sent to user";
         return $this->showMessage($message);
     }
