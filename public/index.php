@@ -7,8 +7,12 @@ date_default_timezone_set('Asia/Tashkent');
 
 //command line commands
 
-$commandLine = new \Views\commands\CommandLine();
-if ($argc > 2) {
-    $commandLine->handleCommands($argc, $argv);
+try {
+    if ($argc >= 2) {
+        $commandLine = new \Views\commands\CommandLine();
+        $commandLine->handleCommands($argc, $argv);
+    }
+} catch (Exception $exception) {
+    echo 'internal error occured';
 }
 
