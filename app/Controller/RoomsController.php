@@ -27,11 +27,6 @@ class RoomsController
         return $this->roomService->reserveRoom($reserveData);
     }
 
-    public function getRoomInfo(int $roomId)
-    {
-        return $this->roomService->getRoomInfo($roomId);
-    }
-
     public function checkRoomIsFree(array $reserveInfo)
     {
         return $this->roomService->checkRoomIsFree($reserveInfo);

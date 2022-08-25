@@ -25,6 +25,7 @@ class Database
             $this->connection = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
         } catch (\Exception $exception)
         {
+            echo $exception->getMessage();
             //TODO write occured exception into logger
         }
     }

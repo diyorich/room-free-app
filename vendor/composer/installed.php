@@ -3,7 +3,7 @@
         'name' => 'diyorich/room-app',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '401113a2dc1c4550cff5cf6abc3d2b2e9c6b797e',
+        'reference' => '20b2aafb09bf99c91959517fb7dc92036a5448b2',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'diyorich/room-app' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '401113a2dc1c4550cff5cf6abc3d2b2e9c6b797e',
+            'reference' => '20b2aafb09bf99c91959517fb7dc92036a5448b2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -2,7 +2,6 @@
 
 namespace Views\commands;
 
-use App\lib\migrations\GeneralMigration;
 use Views\Cmd\RoomsShow;
 
 class CommandLine
@@ -16,25 +15,27 @@ class CommandLine
 
     public function handleCommands($argc, $argv)
     {
-        if($argv[1] == '-room-list') {
+        if ($argv[1] == '-room-list') {
             $roomsController = new \App\Controller\RoomsController();
             $allRooms = $roomsController->getAllRooms();
             $this->roomsShow->showAllRooms($allRooms);
         }
 
         if ($argc == 3 && $argv[1] == '-check-room') {
+            echo 'fuck';
             $this->roomsShow->checkRoom($argv[2]);
         }
 
         if ($argc == 3 && $argv[1] == '-send-notification')
         {
-            $roomsController->sendNotification($argv[2]);
+            $this->roomsShow->sendNotification($argv[2]);
         }
 
         if ($argc == 2 && $argv[1] == '-setup-app')
         {
-            $generalMigrations = new GeneralMigration();
-            $generalMigrations->prepareEnvironment();
+            echo "Setuping application";
+            $migrations = new \App\lib\migrations\GeneralMigration();
+            $migrations->prepareEnvironment();
         }
 
         if ($argc == 2 && $argv[1] == '-help')

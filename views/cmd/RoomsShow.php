@@ -112,6 +112,7 @@ class RoomsShow extends BaseShow
 
     public function checkRoom(int $roomId)
     {
+        var_dump('fuck');
         $reserveInfo = $this->takeRoomDataToCheck($roomId);
         $roomIsBusy = $this->roomController->checkRoomIsFree($reserveInfo);
 
@@ -136,5 +137,12 @@ class RoomsShow extends BaseShow
 
             $this->showMessage($message);
         }
+    }
+
+    public function sendNotification($token)
+    {
+        $this->roomController->sendNotification($token);
+        $message = "Notification successfully sent to user";
+        return $this->showMessage($message);
     }
 }

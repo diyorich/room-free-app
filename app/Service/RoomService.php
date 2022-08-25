@@ -44,29 +44,22 @@ class RoomService
         }
     }
 
-//    public function reserveRoom(array $reserveInfo): string
-//    {
-//        //Some kind of room free validation
-//        $roomIsBusy = $this->getIntersectingRoomSchedule($reserveInfo);
-//
-//        if ($roomIsBusy) {
-//
-//        }
-//
-//        //TODO add validation to max duration hours 10 hours
-//        //TODO validate date value
-//        $roomId = $reserveInfo['roomId'];
-//        $reserveStart = date('Y-m-d H:i', strtotime($reserveInfo['reserveStart']));
-//        $reserveEnd = date('Y-m-d H:i', strtotime($reserveInfo['reserveEnd']));
-//        $reservedBy = $reserveInfo['reservedBy'];
-//        $reserverMail = $reserveInfo['reserverMail'];
-//        //GENERATING TOKEN
-//        $token = $this->generateToken(20);
-//
-//        $this->room->saveRoomReserve($roomId, $reserveStart, $reserveEnd, $reservedBy, $reserverMail , $token);
-//
-//        return $token;
-//    }
+    public function reserveRoom(array $reserveInfo): string
+    {
+        //TODO add validation to max duration hours 10 hours
+        //TODO validate date value
+        $roomId = $reserveInfo['roomId'];
+        $reserveStart = date('Y-m-d H:i', strtotime($reserveInfo['reserveStart']));
+        $reserveEnd = date('Y-m-d H:i', strtotime($reserveInfo['reserveEnd']));
+        $reservedBy = $reserveInfo['reservedBy'];
+        $reserverMail = $reserveInfo['reserverMail'];
+        //GENERATING TOKEN
+        $token = $this->generateToken(20);
+
+        $this->room->saveRoomReserve($roomId, $reserveStart, $reserveEnd, $reservedBy, $reserverMail , $token);
+
+        return $token;
+    }
 
 
     /** Checks if rooms is free to reserve. If not, returns message by person it was reserved by
