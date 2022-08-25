@@ -112,7 +112,6 @@ class RoomsShow extends BaseShow
 
     public function checkRoom(int $roomId)
     {
-        var_dump('fuck');
         $reserveInfo = $this->takeRoomDataToCheck($roomId);
         $roomIsBusy = $this->roomController->checkRoomIsFree($reserveInfo);
 

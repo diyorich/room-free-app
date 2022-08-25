@@ -22,7 +22,6 @@ class CommandLine
         }
 
         if ($argc == 3 && $argv[1] == '-check-room') {
-            echo 'fuck';
             $this->roomsShow->checkRoom($argv[2]);
         }
 

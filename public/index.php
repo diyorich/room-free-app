@@ -8,7 +8,7 @@ date_default_timezone_set('Asia/Tashkent');
 //command line commands
 
 $commandLine = new \Views\commands\CommandLine();
-if ($argc == 2) {
+if ($argc > 2) {
     $commandLine->handleCommands($argc, $argv);
 }
 
