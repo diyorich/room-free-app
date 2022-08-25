@@ -30,11 +30,19 @@ class Room
         return $this->db->queryExecute($query);
     }
 
-    public function saveRoomReserve(int $roomId, string $r_date, string $r_from, string $r_to, int $reserved_by): void
+    public function saveRoomReserve(int $roomId, string $r_from, string $r_to, string $reserved_by, string $mail, string $token): void
     {
-        $query = "INSERT INTO room_schedules(room_id, r_date, r_from, r_to, reserved_by)
-                   VALUES({$roomId}, '{$r_date}', '{$r_from}', '{$r_to}', {$reserved_by})";
+        $query = "INSERT INTO room_schedules(room_id, r_from, r_to, reserved_by, mail, token)
+                   VALUES({$roomId}, '{$r_from}', '{$r_to}', '{$reserved_by}', '{$mail}', '{$token}')";
 
         $this->db->query($query);
+    }
+
+    public function getSpecificRoomSchedules(int $roomId)
+    {
+        $query = "SELECT * FROM room_schedules
+                  WHERE room_id = {$roomId}";
+
+        return $this->db->queryExecute($query);
     }
 }

@@ -13,7 +13,7 @@ class BaseShow
             $line = fgets($handle);
             $response = trim($line);
             fclose($handle);
-            return $response;
+            return addslashes($response);
         }
     }
 }

@@ -2,15 +2,19 @@
 
 namespace App\Controller;
 
+use App\Service\NotificationService;
 use App\Service\RoomService;
 
 class RoomsController
 {
     protected $roomService;
 
+    protected $notificationService;
+
     public function __construct()
     {
         $this->roomService = new RoomService();
+        $this->notificationService = new NotificationService();
     }
 
     public function getAllRooms(): array
@@ -20,11 +24,21 @@ class RoomsController
 
     public function reserveRoom(array $reserveData)
     {
-        $this->roomService->reserveRoom($reserveData);
+        return $this->roomService->reserveRoom($reserveData);
     }
 
     public function getRoomInfo(int $roomId)
     {
         return $this->roomService->getRoomInfo($roomId);
+    }
+
+    public function checkRoomIsFree(array $reserveInfo)
+    {
+        return $this->roomService->checkRoomIsFree($reserveInfo);
+    }
+
+    public function sendNotification(string $token)
+    {
+        $this->notificationService->sendNotification($token);
     }
 }
