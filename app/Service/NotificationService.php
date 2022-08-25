@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Models\Notification;
 use App\Service\Remote\MailService;
+use App\Service\Remote\SmsService;
 
 class NotificationService
 {
@@ -21,5 +22,8 @@ class NotificationService
         $mailBody = "You received this mail because you reserved room #{$receiverRoom} from : {$reserveStart} to : {$reserveEnd}";
         $mailService = new MailService();
         $mailService->sendMail($receiverMail, $mailTitle,$mailBody);
+
+        $smsService = new SmsService();
+        $smsService->sendSms(998903277614, $mailBody);
     }
 }
